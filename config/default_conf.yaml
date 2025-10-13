@@ -1,0 +1,21 @@
+# Data configuration
+data:
+  image_size: 32
+  batch_size: 64
+
+# CNN Model configuration
+cnn_model:
+  epochs: 5
+  lr: 0.001
+
+# ViT Model configuration
+vit_model:
+  epochs: 5
+  lr: 0.001
+  embed_dim: 128
+  depth: 4
+  n_heads: 4
+  mlp_ratio: 4.0
+  qkv_bias: True
+  p: 0.0
+  attn_p: 0.0
