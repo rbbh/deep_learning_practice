@@ -1,4 +1,4 @@
-from data.data_loader import Preprocessor
+from data_loader.data_loader import Preprocessor
 from models.cnn_model import SimpleVGG
 from models.vit_model import SimpleViT
 from training.trainer import Trainer
