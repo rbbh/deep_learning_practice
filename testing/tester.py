@@ -1,8 +1,8 @@
-import torch
-from sklearn.metrics import confusion_matrix, classification_report
-import seaborn as sns
-import matplotlib.pyplot as plt
 import logging
+import matplotlib.pyplot as plt
+import seaborn as sns
+import torch
+from sklearn.metrics import classification_report, confusion_matrix
 
 
 class Tester:
@@ -12,6 +12,7 @@ class Tester:
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
         self.model.to(self.device)
         self.model.eval()
+        self.classes = self.test_loader.dataset.classes
 
     def test(self):
         y_pred = []
@@ -28,12 +29,21 @@ class Tester:
 
     def analyze(self, y_true, y_pred):
         logging.info("Classification Report:")
-        logging.info("\n" + classification_report(y_true, y_pred, target_names=[str(i) for i in range(10)]))
+        logging.info(
+            "\n" + classification_report(y_true, y_pred, target_names=self.classes)
+        )
 
         cm = confusion_matrix(y_true, y_pred)
         plt.figure(figsize=(10, 8))
-        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-        plt.xlabel('Predicted')
-        plt.ylabel('True')
-        plt.title('Confusion Matrix')
+        sns.heatmap(
+            cm,
+            annot=True,
+            fmt="d",
+            cmap="Blues",
+            xticklabels=self.classes,
+            yticklabels=self.classes,
+        )
+        plt.xlabel("Predicted")
+        plt.ylabel("True")
+        plt.title("Confusion Matrix")
         plt.show()
