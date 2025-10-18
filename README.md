@@ -55,8 +55,8 @@ This project provides a framework for training and evaluating two deep learning 
 
 1.  Clone the repository:
     ```bash
-    git clone <repository-url>
-    cd <repository-name>
+    git clone git@github.com:rbbh/deep_learning_practice.git
+    cd deep_learning_practice
     ```
 
 2.  Create a virtual environment (recommended):
@@ -91,7 +91,7 @@ python main.py --config path/to/your/config.yaml
 A Jupyter notebook is provided for an interactive demonstration. To use it, make sure you have Jupyter installed (`pip install jupyter`) and run:
 
 ```bash
-jupyter notebook notebooks/demonstration.ipynb
+jupyter notebook notebooks/practice_cnn.ipynb
 ```
 
 ## Configuration
